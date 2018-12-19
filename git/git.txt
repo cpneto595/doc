@@ -156,4 +156,20 @@ Merge do develop no master
 $ git checkout master
 $ git merge develop
 
-Espero ter ajudado um pouco com essa explicação.
+Para finalizar
+
+$ git tag 1.0
+
+Git log pra ver como foi o desenvolvimento
+
+$ git log
+
+Status
+
+$ git log --stat
+
+Para facilitar a visualização dos logs use o gitk
+
+$ gitk
+
+Espero ter ajudado um pouco com esse post.
