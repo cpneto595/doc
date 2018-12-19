@@ -1,0 +1,81 @@
+
+
+	Git
+
+Neste post vou tentar descrever uma maneira facil de usar o git.
+Espero que ajude algumas pessoas a entenderem um pouco, como não
+sou um mestre, acredito que possam ter melhores maneiras de se 
+trabalhar, essa é uma maneira facil e simples de se trabalhar.
+
+Vamos ao inicio.
+
+Setando nome e e-mail no git
+
+git --config user.name "Seu Nome"
+git --config user.email "seuemail@email.com"
+
+Precisamos criar um diretório para o nosso projeto.
+
+$ cd
+$ mkdir proj.git
+
+Depois vamos iniciar o git.
+
+$ git init
+
+Criando arquivo README.md
+
+$ echo "Arquivo README.md" > README.md
+
+Adicionando README.md ao git
+
+$ git add README.md
+
+Primeiro Commit
+
+$ git commit -m "Primeiro Commit"
+
+Adicionando o Remoto
+
+$ git remote add origin ssh://user@server.com.br:/~/proj
+
+Depois em outra pasta ou outro computador
+
+$ git clone ssh://user@server.com.br:/~/proj
+
+Com o clone você pode começar a mexer
+
+$ echo "ola" > ola.txt
+$ git add ola.txt
+$ git commit -m "ola"
+$ echo "lalalaal" >ola.txt 
+$ git diff
+
+Deve sair algo assim
+
+diff --git a/ola.txt b/ola.txt
+index 7bs3df2..9r8t5t4 r0r6r4
+--- a/ola.txt
++++ b/ola.txt
+@@ -1,3 +1 @@
+-ola
+-
+-ola
++lalalaal
+
+Esta foi a diferença entre os dois arquivos
+-ola = saiu o ola
++lalalaal = entrou lalalaal
+
+Bom, assim se ve as diferenças no git.
+
+Vamos criar os branchs
+
+$ git checkout -b develop
+$ git add ola.txt
+$ git commit -m "lala"
+
+Agora vamos criar o branch da parte do projeto
+
+$ git push --set-upstream origin develop
+
