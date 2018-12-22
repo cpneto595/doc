@@ -1,0 +1,175 @@
+
+
+	Git
+
+Neste post vou tentar descrever uma maneira facil de usar o git.
+Espero que ajude algumas pessoas a entenderem um pouco, como não
+sou um mestre, acredito que possam ter melhores maneiras de se 
+trabalhar, essa é uma maneira facil e simples de se trabalhar.
+
+Vamos ao inicio.
+
+Setando nome e e-mail no git
+
+git --config user.name "Seu Nome"
+git --config user.email "seuemail@email.com"
+
+Precisamos criar um diretório para o nosso projeto.
+
+$ cd
+$ mkdir proj.git
+
+Depois vamos iniciar o git.
+
+$ git init
+
+Criando arquivo README.md
+
+$ echo "Arquivo README.md" > README.md
+
+Adicionando README.md ao git
+
+$ git add README.md
+
+Primeiro Commit
+
+$ git commit -m "Primeiro Commit"
+
+Adicionando o Remoto
+
+$ git remote add origin ssh://user@server.com.br:/~/proj
+
+Depois em outra pasta ou outro computador
+
+$ git clone ssh://user@server.com.br:/~/proj
+
+Com o clone você pode começar a mexer
+
+$ echo "ola" > ola.txt
+$ git add ola.txt
+$ git commit -m "ola"
+$ echo "lalalaal" >ola.txt 
+$ git diff
+
+Deve sair algo assim
+
+diff --git a/ola.txt b/ola.txt
+index 7bs3df2..9r8t5t4 r0r6r4
+--- a/ola.txt
++++ b/ola.txt
+@@ -1,3 +1 @@
+-ola
+-
+-ola
++lalalaal
+
+Esta foi a diferença entre os dois arquivos
+-ola = saiu o ola
++lalalaal = entrou lalalaal
+
+Bom, assim se ve as diferenças no git.
+
+Vamos criar os branchs
+
+$ git checkout -b develop
+$ git add ola.txt
+$ git commit -m "lala"
+$ git push --set-upstream origin develop
+
+Vamos criar um arquivo "ola mundo" em c.
+
+Criando branch ola
+
+$ git checkout -b ola develop
+
+$ vim ola.c
+
+Adicione as seguintes linhas(entre o pontilhado)
+
+--------------------------------------------
+
+#include <stdio.h>
+
+--------------------------------------------
+
+Salve e saia
+
+$ git add ola.c
+
+$ git commit -m "Inserindo biblioteca"
+
+$ git push --set-upstream origin ola
+
+Vendo os logs
+
+$ git log
+
+A resposta será os commits feitos
+
+$ vim ola.c
+
+Adicione as linha
+----------------------------------------------
+
+void main(){
+        printf("Ola Mundo!");
+}
+
+---------------------------------------------
+
+Salve e saia
+
+$ git diff
+
+Vai mostrar as diferenças
+
+Adicionando arquivo ao commit
+
+$ git add ola.c
+$ git commit -m "Termino do Ola Mundo!"
+$ git push
+
+Compilando o programa
+
+$ gcc -o ola.sh ola.c
+
+Executando
+
+$ ./ola.sh
+
+Adicionando o executavel ao git
+
+$ git add ola.sh
+$ git commit -m "Add executavel"
+$ git push
+
+Merge do branch ola em develop
+
+$ git checkout develop
+$ git merge ola
+$ git push
+
+Entre no diretório da maquina que está o git.
+
+Merge do develop no master
+
+$ git checkout master
+$ git merge develop
+
+Para finalizar
+
+$ git tag 1.0
+
+Git log pra ver como foi o desenvolvimento
+
+$ git log
+
+Status
+
+$ git log --stat
+
+Para facilitar a visualização dos logs use o gitk
+
+$ gitk
+
+Espero ter ajudado um pouco com esse post.
